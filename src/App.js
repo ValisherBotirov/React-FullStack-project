@@ -1,17 +1,18 @@
-import { useState } from "react";
-import Counter from "./components/Counter";
-import { useSelector } from "react-redux";
-
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Navbar from "./components/Navbar";
+import "./index.css";
 function App() {
-  const [counter, setCounter] = useState(0);
-
-  const state = useSelector((state) => state);
-  console.log(state, "store");
-
   return (
-    <div className="App container">
-      <h1>Counter is : {state.count}</h1>
-      <Counter />
+    <div className="">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     </div>
   );
 }
