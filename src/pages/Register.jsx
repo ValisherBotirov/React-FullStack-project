@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 import "../assets/register.css";
 import Input from "../components/form/Input";
+import {useDispatch, useSelector} from "react-redux";
+import {registerUser} from "../reducers/auth";
 
 export default function Register() {
+
+  const store = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+
+  const {isLoading} = store
+
+  function onSubmit(e){
+    e.preventDefault()
+    dispatch(registerUser())
+  }
+
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +32,9 @@ export default function Register() {
             label={"Password"}
             type={"password"}
           />
+          <button className="btn btn-primary form-control mt-3" disabled={isLoading} onClick={onSubmit}>
+            {isLoading ? "Loading..."  :'Register'}
+          </button>
         </div>
       </div>
     </div>

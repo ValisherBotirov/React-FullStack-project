@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import counterReduser from "../reducers/count";
+import authReducer from "../reducers/auth";
 export default configureStore({
-  reducer: counterReduser,
+  reducer: {
+    auth :authReducer
+  },
   devTools: process.env.NODE_ENV !== "production",
 });
