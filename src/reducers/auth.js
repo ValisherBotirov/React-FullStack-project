@@ -28,9 +28,15 @@ export const counterSlice = createSlice({
       state.error = "error";
       state.isLoading = false
     },
+
+    logout : (state)=>{
+      state.user = null;
+      state.loginIn  = false
+    }
+
   },
 });
 
-export const { loginUser, signInUser, signInSuccess, signInFailed } =
+export const { logout, signInUser, signInSuccess, signInFailed } =
   counterSlice.actions;
 export default counterSlice.reducer;

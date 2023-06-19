@@ -1,10 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import "./Navbar.css";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../reducers/auth";
 
 export default function Navbar() {
   const store = useSelector(state=> state.auth)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const logOut = () =>{
+    localStorage.removeItem("token")
+    dispatch(logout())
+    navigate("/login")
+  }
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light  bg-dark ">
@@ -27,7 +35,7 @@ export default function Navbar() {
               {
                 store.loginIn ? <div className="d-flex gap-3 align-items-center">
                   <p className="navbar-list align-content-center m-0">{store.user.username}</p>
-                  <div className="btn btn-danger">Log Out</div>
+                  <div className="btn btn-danger" onClick={logOut}>Log Out</div>
                 </div>
                     :
                     <>
