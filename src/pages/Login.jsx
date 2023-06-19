@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Input from "../components/form/Input";
 import {useDispatch, useSelector} from "react-redux";
-import {loginUser} from "../reducers/auth";
+import {signInUser} from "../reducers/auth";
 
 export default function Login() {
   const [userName, setUserName] = useState("");
@@ -13,7 +13,7 @@ export default function Login() {
   const onSubmit =(e)=>{
     e.preventDefault()
     console.log(store,"state")
-    dispatch(loginUser())
+    dispatch(signInUser())
   }
 
   return (
