@@ -7,17 +7,17 @@ export default function Navbar() {
   const store = useSelector(state=> state.auth)
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light  bg-dark ">
-        <div class="container-fluid container">
+      <nav className="navbar navbar-expand-lg navbar-light  bg-dark ">
+        <div className="container-fluid container">
           <Link to="/" className="navbar-list navbar-brand">
             Navbar
           </Link>
 
           <div
-            class="collapse navbar-collapse d-flex justify-content-between"
+            className="collapse navbar-collapse d-flex justify-content-between"
             id="navbarTogglerDemo02"
           >
-            <div class="d-flex gap-3 ">
+            <div className="d-flex gap-3 ">
               <Link to="/" className="navbar-list">
                 Home
               </Link>

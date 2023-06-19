@@ -4,10 +4,12 @@ import Input from "../components/form/Input";
 import { useDispatch, useSelector } from "react-redux";
 import {signInFailed, signInSuccess, signInUser} from "../reducers/auth";
 import AuthService from "../service/auth";
+import {useNavigate} from "react-router-dom";
 
 export default function Register() {
   const store = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const { isLoading } = store;
 
@@ -27,6 +29,7 @@ export default function Register() {
     AuthService.userRegister(user).then((res)=>{
       console.log(res)
       dispatch(signInSuccess(res.user))
+      navigate("/")
     }).catch((err)=>{
       console.log(err)
       dispatch(signInFailed())
