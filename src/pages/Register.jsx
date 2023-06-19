@@ -26,7 +26,7 @@ export default function Register() {
     dispatch(signInUser());
     AuthService.userRegister(user).then((res)=>{
       console.log(res)
-      dispatch(signInSuccess(res))
+      dispatch(signInSuccess(res.user))
     }).catch((err)=>{
       console.log(err)
       dispatch(signInFailed())

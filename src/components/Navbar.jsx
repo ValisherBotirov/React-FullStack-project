@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import {useSelector} from "react-redux";
 
 export default function Navbar() {
+  const store = useSelector(state=> state.auth)
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light  bg-dark ">
@@ -19,24 +21,27 @@ export default function Navbar() {
               <Link to="/" className="navbar-list">
                 Home
               </Link>
-              <Link to="/login" className="navbar-list">
-                Login
-              </Link>
-              <Link to="/register" className="navbar-list">
-                Register
-              </Link>
+
             </div>
-            <form class="d-flex">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+            <div className="d-flex gap-3 align-items-center">
+              {
+                store.loginIn ? <div className="d-flex gap-3 align-items-center">
+                  <p className="navbar-list align-content-center m-0">{store.user.username}</p>
+                  <div className="btn btn-danger">Log Out</div>
+                </div>
+                    :
+                    <>
+                      <Link to="/login" className="navbar-list">
+                        Login
+                      </Link>
+                      <Link to="/register" className="navbar-list">
+                        Register
+                      </Link>
+                    </>
+              }
+
+            </div>
+
           </div>
         </div>
       </nav>

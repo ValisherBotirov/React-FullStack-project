@@ -20,6 +20,7 @@ export const counterSlice = createSlice({
       state.loginIn = true;
       state.isLoading = false;
       state.user = action.payload
+      localStorage.setItem("token",action.payload.token)
     },
 
     signInFailed: (state) => {
