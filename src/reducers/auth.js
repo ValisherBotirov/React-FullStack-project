@@ -21,6 +21,7 @@ export const counterSlice = createSlice({
       state.isLoading = false;
       state.user = action.payload
       localStorage.setItem("token",action.payload.token)
+      localStorage.setItem("isLogin",state.loginIn)
     },
 
     signInFailed: (state) => {
@@ -32,6 +33,8 @@ export const counterSlice = createSlice({
     logout : (state)=>{
       state.user = null;
       state.loginIn  = false
+      localStorage.removeItem("token")
+      localStorage.removeItem("isLogin")
     }
 
   },

@@ -13,7 +13,7 @@ export const ArticleSlice = createSlice({
             state.isLoading = true
         },
         getArticleSuccess:(state,action)=>{
-            state.articles = action.payload;
+            state.articles = action.payload.articles;
             state.isLoading = false
         }
     }

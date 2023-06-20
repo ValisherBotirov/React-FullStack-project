@@ -6,12 +6,13 @@ import {logout} from "../reducers/auth";
 
 export default function Navbar() {
   const store = useSelector(state=> state.auth)
+  const isLogin = localStorage.getItem("isLogin")
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const logOut = () =>{
-    localStorage.removeItem("token")
     dispatch(logout())
     navigate("/login")
+
   }
   return (
     <div>
@@ -33,9 +34,9 @@ export default function Navbar() {
             </div>
             <div className="d-flex gap-3 align-items-center">
               {
-                store.loginIn ? <div className="d-flex gap-3 align-items-center">
-                  <p className="navbar-list align-content-center m-0">{store.user.username}</p>
-                  <div className="btn btn-danger" onClick={logOut}>Log Out</div>
+                isLogin ? <div className="d-flex gap-3 align-items-center">
+                  <p className="navbar-list align-content-center m-0">{store?.user?.username}</p>
+                  <div className="btn btn-danger" onClick={logOut}>Log Out </div>
                 </div>
                     :
                     <>
