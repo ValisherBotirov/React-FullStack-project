@@ -5,11 +5,12 @@ import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import "./index.css";
 import AuthService from "./service/auth";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {signInSuccess} from "./reducers/auth";
 import {useEffect} from "react";
-import {ArticleSlice, getArticleStart, getArticleSuccess} from "./reducers/article";
+import { getArticleStart, getArticleSuccess} from "./reducers/article";
 import ArticleService from "./service/article";
+
 
 function App() {
 const dispatch = useDispatch()
@@ -62,6 +63,7 @@ const dispatch = useDispatch()
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+
     </div>
   );
 }
