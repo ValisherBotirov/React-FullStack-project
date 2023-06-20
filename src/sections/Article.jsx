@@ -2,12 +2,19 @@ import React from "react";
 import "./Article.css"
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import Loader from "../components/Loader";
 
 const Article = () =>{
     const store = useSelector(state => state.articles)
+    const {isLoading} = useSelector(state => state.articles)
+
     console.log(store)
     return(
         <div className="container mt-5">
+            {
+                isLoading &&
+            <Loader/>
+            }
             <div>
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                     {
@@ -27,9 +34,9 @@ const Article = () =>{
                                         </div>
                                         <div className="card-footer d-flex justify-content-between align-items-center">
                                             <div className="btn btn-group">
-                                                <div className="btn btn-success">View</div>
-                                                <div className="btn btn-primary">Edit</div>
-                                                <div className="btn btn-danger">Delete</div>
+                                                <div className="btn btn-outline-success">View</div>
+                                                <div className="btn btn-outline-primary">Edit</div>
+                                                <div className="btn btn-outline-danger">Delete</div>
                                             </div>
                                             <small className="text-muted">{item?.author.username}</small>
                                         </div>
